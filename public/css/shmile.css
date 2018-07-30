@@ -16,21 +16,27 @@ body {
     position: relative;
 }
 
+#review-buttons {
+    position: absolute;
+    width: 100%;
+}
+
 /*
  * Awesome buttons, courtesy of ZURB:
  * http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
  */
 button.awesome {
     z-index: 2;
-    position: absolute;
+    cursor: hand;
 }
 button#start-button {
-    cursor: hand;
+    position: absolute;
 }
 
 .awesome, .awesome:visited {
+    margin: 20px auto;
     background: #222 url(/images/alert-overlay.png) repeat-x; 
-    display: inline-block; 
+    display: block; 
     padding: 5px 10px 6px; 
     color: #fff; 
     text-decoration: none;
