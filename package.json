@@ -14,7 +14,7 @@
     "party"
   ],
   "scripts": {
-    "start": "node_modules/.bin/coffee app.coffee",
+    "start": "coffee app.coffee",
     "test": "gulp test"
   },
   "license": "MIT",
@@ -41,9 +41,6 @@
     "rewire": "~2.0.1",
     "sinon": "~1.10.0"
   },
-  "engines": [
-    "node >=0.8.0"
-  ],
   "directories": {
     "lib": "lib"
   }
