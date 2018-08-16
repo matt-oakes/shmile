@@ -3,6 +3,15 @@
  * @author andrewhao
  */
 
+html {
+  overflow:   scroll;
+  /*overflow-x: hidden;*/
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 body {
     background-color: #333;
     text-align: center;
