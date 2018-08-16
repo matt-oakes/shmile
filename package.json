@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "start": "coffee app.coffee",
-    "dev": "STUB_CAMERA=true coffee app.coffee",
+    "dev": "PRINTER_ENABLED=true STUB_CAMERA=true coffee app.coffee",
     "test": "gulp test"
   },
   "license": "MIT",

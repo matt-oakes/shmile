@@ -29,9 +29,6 @@ button.awesome {
     z-index: 2;
     cursor: hand;
 }
-button#start-button {
-    position: absolute;
-}
 
 .awesome, .awesome:visited {
     margin: 40px auto;
@@ -53,13 +50,18 @@ button#start-button {
 .small.awesome, .small.awesome:visited          { font-size: 11px; padding: 0; }
 .awesome, .awesome:visited,
 .medium.awesome, .medium.awesome:visited        { font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
-.large.awesome, .large.awesome:visited          { font-size: 5em; padding: 0.25em 0.5em 0.3em; }
+.large.awesome, .large.awesome:visited          { font-size: 3.5em; padding: 0.20em 0.5em 0.3em; }
 .superlarge.awesome, .superlarge.awesome:visited    {
-    font-size: 7em;
-    padding: 0.5em;
+    font-size: 6em;
+    padding: 0.4em;
     color: #775402;
     box-shadow:0 0.3em 1em rgba(0,0,0,0.8);
     text-shadow: 0 -1px 2px rgba(0,0,0,0.2);
 }
 .boinkyellow.awesome, .boinkyellow.awesome:visited        { background-color: #F5BE1B; }
 .boinkyellow.awesome:hover                           { background-color: #fc9200; }
+
+button#start-button {
+    position: absolute;
+    margin: 0 auto;
+}
