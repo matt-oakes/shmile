@@ -65,3 +65,13 @@ button#start-button {
     position: absolute;
     margin: 0 auto;
 }
+button#next-button, button#print-button {
+    display: inline-block;
+    margin: 0;
+}
+button#next-button {
+    margin-right: 20px;
+}
+button#print-button {
+    margin-left: 20px;
+}
