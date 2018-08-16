@@ -38,7 +38,10 @@ exp.get "/gallery", (req, res) ->
     image_paths: PhotoFileUtils.composited_images(true)
 
 # FIXME/ahao This global state is no bueno.
-State = image_src_list: []
+State = {
+  image_src_list: []
+  last_output_file_path: null
+}
 
 ccKlass = if process.env['STUB_CAMERA'] is "true" then StubCameraControl else CameraControl
 camera = new ccKlass().init()
@@ -52,6 +55,7 @@ io.sockets.on "connection", (websocket) ->
   sys.puts "Web browser connected"
   
   camera.on "camera_begin_snap", ->
+    State.last_output_file_path = null
     websocket.emit "camera_begin_snap"
 
   camera.on "camera_snapped", ->
@@ -73,13 +77,17 @@ io.sockets.on "connection", (websocket) ->
     compositer.emit "composite"
     compositer.on "composited", (output_file_path) ->
       console.log "Finished compositing image. Output image is at ", output_file_path
+      State.last_output_file_path = output_file_path
       State.image_src_list = []
-
-      # Control this with PRINTER=true or PRINTER=false
-      if process.env.PRINTER_ENABLED is "true"
-        console.log "Printing image at ", output_file_path
-        exec "lpr -o #{process.env.PRINTER_IMAGE_ORIENTATION} -o media=\"#{process.env.PRINTER_MEDIA}\" #{output_file_path}"
       websocket.broadcast.emit "composited_image", PhotoFileUtils.photo_path_to_url(output_file_path)
 
     compositer.on "generated_thumb", (thumb_path) ->
       websocket.broadcast.emit "generated_thumb", PhotoFileUtils.photo_path_to_url(thumb_path)
+  
+  websocket.on "print", ->
+    # Control this with PRINTER=true or PRINTER=false
+    if process.env.PRINTER_ENABLED is "true"
+      output_file_path = State.last_output_file_path
+      if output_file_path
+        console.log "Printing image at ", output_file_path
+        exec "lpr -o #{process.env.PRINTER_IMAGE_ORIENTATION} -o media=\"#{process.env.PRINTER_MEDIA}\" #{output_file_path}"

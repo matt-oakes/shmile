@@ -19,6 +19,6 @@
     "tests"
   ],
   "dependencies": {
-    "shmile-ui": "matt-oakes/shmile-ui#1cd9daed5986a869f689aaa8096aea45f5e4a5b4"
+    "shmile-ui": "matt-oakes/shmile-ui#87d236a921013eed60e412c3061b9e2bffd362a8"
   }
 }
