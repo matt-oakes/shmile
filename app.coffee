@@ -79,10 +79,10 @@ io.sockets.on "connection", (websocket) ->
       console.log "Finished compositing image. Output image is at ", output_file_path
       State.last_output_file_path = output_file_path
       State.image_src_list = []
-      websocket.broadcast.emit "composited_image", PhotoFileUtils.photo_path_to_url(output_file_path)
+      websocket.emit "composited_image", PhotoFileUtils.photo_path_to_url(output_file_path)
 
     compositer.on "generated_thumb", (thumb_path) ->
-      websocket.broadcast.emit "generated_thumb", PhotoFileUtils.photo_path_to_url(thumb_path)
+      websocket.emit "generated_thumb", PhotoFileUtils.photo_path_to_url(thumb_path)
   
   websocket.on "print", ->
     # Control this with PRINTER=true or PRINTER=false
