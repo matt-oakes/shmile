@@ -38,6 +38,9 @@ class ImageCompositor
         IMAGE_GEOMETRY + "+" + (2 * IMAGE_PADDING + IMAGE_WIDTH) + "+" + (2 * IMAGE_PADDING + IMAGE_HEIGHT)
       ]
 
+      if @img_src_list.length > 4
+        @img_src_list = @img_src_list.slice(0, 4)
+
       for i in [0..@img_src_list.length-1] by 1
         convertArgs.push @img_src_list[i]
         convertArgs.push "-geometry"
