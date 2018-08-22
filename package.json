@@ -14,8 +14,10 @@
     "party"
   ],
   "scripts": {
+    "forever-start": "forever start -l forever-log.log -o forever-out.log -e forever-error.log --append -c coffee app.coffee",
+    "forever-stop": "forever stop -c \"PRINTER_ENABLED=true coffee\" app.coffee",
     "start": "coffee app.coffee",
-    "dev": "PRINTER_ENABLED=true STUB_CAMERA=true coffee app.coffee",
+    "dev": "STUB_CAMERA=true coffee app.coffee",
     "test": "gulp test"
   },
   "license": "MIT",
@@ -24,13 +26,13 @@
     "url": "http://github.com:porkbuns/shmile.git"
   },
   "dependencies": {
-    "socket.io": "~0.9.16",
-    "express": "~3.4.8",
-    "jade": "~1.2.0",
-    "imagemagick": "~0.1.3",
-    "yaml": "~0.2.3",
     "coffee-script": "~1.7.1",
-    "dotenv": "~0.3.0"
+    "dotenv": "~0.3.0",
+    "express": "~3.4.8",
+    "imagemagick": "~0.1.3",
+    "jade": "~1.2.0",
+    "socket.io": "~0.9.16",
+    "yaml": "~0.2.3"
   },
   "devDependencies": {
     "bower": "^1.6.8",

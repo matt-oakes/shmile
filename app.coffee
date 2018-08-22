@@ -85,9 +85,7 @@ io.sockets.on "connection", (websocket) ->
       websocket.emit "generated_thumb", PhotoFileUtils.photo_path_to_url(thumb_path)
   
   websocket.on "print", ->
-    # Control this with PRINTER=true or PRINTER=false
-    if process.env.PRINTER_ENABLED is "true"
-      output_file_path = State.last_output_file_path
-      if output_file_path
-        console.log "Printing image at ", output_file_path
-        exec "lpr -o #{process.env.PRINTER_IMAGE_ORIENTATION} -o media=\"#{process.env.PRINTER_MEDIA}\" #{output_file_path}"
+    output_file_path = State.last_output_file_path
+    if output_file_path
+      console.log "Printing image at ", output_file_path
+      exec "lpr #{output_file_path}"
